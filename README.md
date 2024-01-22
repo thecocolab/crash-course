@@ -1,4 +1,4 @@
-# Cocolab Crash Course Repository
+# CoCoLab Crash Course Repository
 
 ## Overview
 
@@ -16,6 +16,6 @@ This repository serves as a crash course designed for undergraduates joining CoC
 
 - **Introduction to Source Estimation (module6):** Explore the concepts and usage of source estimation in Python.
 
-Feel free to explore each module to access specific learning materials and resources. Follow the README files in each module for detailed instructions and guidance related to the respective topic. This crash course aims to provide a solid foundation for undergraduates entering Cocolab, helping them navigate the tools and technologies essential for their work. 
+Feel free to explore each module to access specific learning materials and resources. Follow the README files in each module for detailed instructions and guidance related to the respective topic. This crash course aims to provide a solid foundation for undergraduates entering CoCoLab, helping them navigate the tools and technologies essential for their work. 
 
 ## Happy CoCo learning!
