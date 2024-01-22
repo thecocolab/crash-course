@@ -1,0 +1,7 @@
+mne
+mne-bids
+matplotlib
+sklearn
+pooch
+tqdm
+autoreject
