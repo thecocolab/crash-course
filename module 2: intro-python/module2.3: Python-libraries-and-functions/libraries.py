@@ -39,10 +39,14 @@ plt.title('Sinusoidal Plot')
 plt.show()
 
 # MNE-Python Examples
+import os # This is a Python module for interacting with the operating system
+
+# define path to data
+path = os.path.join(mne.datasets.sample.data_path(), 'MEG', 'sample', 'sample_audvis_raw.fif')
 
 # Loading example MEG data
 sample_data_path = mne.datasets.sample.data_path()
-raw = mne.io.read_raw_fif(sample_data_path + '/MEG/sample/sample_audvis_raw.fif', preload=True)
+raw = mne.io.read_raw_fif(path, preload=True)
 
 # Plotting the raw data
 raw.plot()
