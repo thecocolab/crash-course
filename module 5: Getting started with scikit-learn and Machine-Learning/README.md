@@ -45,7 +45,7 @@ Welcome to the Module 5: Machine Learning and scikit-learn! This repository prov
         - Learn ML techniques to decode evoked and induced MEG/EEG activity
         - Train machine learning models on MEG data using MNE-python and PyTorch
     
-3. To apply what you have learned. We prepared some exerices. 
+3. To apply what you have learned. We prepared some notebook to train. 
    - [01-Classification-Titanic_Dataset.ipynb](#)
       This notebook guides you through a comprehensive machine learning approach to address the Titanic disaster. It covers data cleaning, feature engineering, and model development, emphasizing classification. The goal is to predict passenger survival (binary: 1 for survived, 0 for not survived) using the well-known Titanic dataset, which is available for download on Kaggle. 
    - [02-Regression-Prediction_taxi_fare_NYC.ipynb](#)
