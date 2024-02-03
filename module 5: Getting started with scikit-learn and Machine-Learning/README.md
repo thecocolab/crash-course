@@ -53,3 +53,7 @@ Welcome to the Module 5: Machine Learning and scikit-learn! This repository prov
 
    - [Stanford CS229: Machine Learning](https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU)
      - Lecture topics include linear regression, gradient descent, logistic regression, SVMs, decision trees, neural networks, and more.
+   
+   - [Machine Learning with Josh Starmer](https://www.youtube.com/playlist?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF)
+     - Short video that explain Machine Learning concepts and models. 
+    
