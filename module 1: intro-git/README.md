@@ -113,6 +113,9 @@ Git is a version control system that tracks changes in your code, allowing multi
   $ git fetch upstream main:main
   ```
 
+## Git and GitHub Tutorial
+
+- For a full tutorial on using git and github check this [Video](https://youtu.be/fBgxmpk9C4I?si=nDAjC5j9F1WQVWht)
 
 ## Additional Resources
 
