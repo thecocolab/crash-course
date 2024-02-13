@@ -164,8 +164,6 @@ A dictionary is an unordered collection of key-value pairs, allowing fast retrie
 
    For loops are used for iteration in Python. They allow you to repeatedly execute a block of code for a specified number of times or over elements in a sequence. In this example, a for loop is used to iterate over integers, performing arithmetic computations for each iteration.
 
-Certainly! Here's an improved version of your introduction:
-
 ## intro.py
 
 You can execute the provided code snippets by running the following command in your terminal:

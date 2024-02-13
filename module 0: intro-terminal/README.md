@@ -232,3 +232,7 @@ This module covers essential skills for remote computing and data handling, key 
 
 Remote computing and data handling are crucial for dealing with large datasets, accessing powerful computing resources, and collaborative work in data science and coding projects.
 
+## 8: Linux commands
+
+This is a [CheatSheet](https://www.git-tower.com/blog/command-line-cheat-sheet/) with different commands that you might find useful.
+

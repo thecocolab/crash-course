@@ -70,3 +70,7 @@
 - **Extensions:** Explore and install additional extensions from the VS Code marketplace to enhance your Python development experience.
 
 Visual Studio Code, coupled with its powerful features and extensions, offers a seamless and productive environment for Python developers.
+
+### VSCode CheatSheet:
+
+You can find a list of useful commands in this [CheatSheet](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)

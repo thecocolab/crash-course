@@ -123,5 +123,18 @@ Git is a version control system that tracks changes in your code, allowing multi
 - [Set Up Git - GitHub Docs](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
 - [GitHub Glossary](https://docs.github.com/en/get-started/quickstart/github-glossary)
 
+## GitHub Pro and Copilot:
+
+Requirements: a valid student card.
+ - First you have to sign in for Student developer pack by Github: You can find steps through this [link](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student#applying-to-github-global-campus). This will take 5 minutes to finish and they accepted my application in 3 days.
+- Install Visual Studio code (Will be done at module 2.2).
+- Install Github Capilot extension.  Steps. The main task of GitHub Copilot is completing code.
+
+If you want to have a chatgpt like feature you need to install GitHub Copilot Chat:
+Requirements: Last version of visual studio July 2023 (version 1.81). For Linux/windows: In help menu select check updates. For mac  In Code menu select check updates.
+
+- First you have to go to Extensions: marketplace
+- Then look for github copilot chat, install the extension.
+- Join the waitlist for this feature. When you are Accepted to GitHub Copilot chat beta. A new chat icon below extensions on the left side will appear.
 
 
