@@ -19,7 +19,8 @@ Once connected, do not execute any code immediately. Instead, you need to reques
 ### Slurm Scheduler. 
 SLURM is a workload manager that has been to ask for resources. To ask for an interactive job : go to the terminal, and type `salloc --time=01:00:00 --mem=4G --cpus-per-task=4 --account=def-kjerbi`. As you can expect, each of the parameters has specific significance. `time` - duration for which you need to access the server, `mem` - Memory size for the job, `cpus-per-task` - number of CPU cores, `account` - PI's account through which you access. To run a batch job: you can create an shell script with an extension `.sh` e.g: jobscript.sh, inside which you need to add 
 
-```#!/bin/bash
+```
+#!/bin/bash
 #SBATCH --time=01:00:00  # Job duration is 1 hour
 #SBATCH --cpus-per-task=4  # Number of CPU cores
 #SBATCH --mem=4G  # Amount of memory
@@ -29,10 +30,10 @@ module load python/3.8  # Load required modules, e.g., Python
 srun python my_script.py  # Execute your script
 ```
 
-This script basically asks the resource and run the script in the last time. To trigger this, run `sbatch jobscript.sh`. Once the command is run, your request is pushed into the SLURM's queue and you can monitor the status through `squeue`
+This script basically asks the resource and run the python script in the last line. To do so, run `sbatch jobscript.sh`. Once the command is run, your request is pushed into the SLURM's queue and you can monitor the status through `squeue` or simply `sq`
 
 ### Using VScode for an interactive job
-This [link](https://prashp.gitlab.io/post/compute-canada-tut/#531-using-jupyter-on-compute-canada) has all the necessary details to properly set up and access the ComputeCanada server nodes right from the VSCode interface. To give you an idea, VScode is like the interface, and when you run a script, the command is transferred over network and the script is run on the server nodes.
+This [link](https://prashp.gitlab.io/post/compute-canada-tut/#531-using-jupyter-on-compute-canada) has all the necessary details to properly set up and access the ComputeCanada server nodes right from the VSCode interface. To give you an idea, VScode is like the interface, and when you run a script, the command/request is transferred over network and the script is run on the server nodes.
 
 In most cases, mounting remote server folders to local machine would be greatly useful,
 ```
