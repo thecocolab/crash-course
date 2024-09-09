@@ -3,6 +3,12 @@
 Welcome to the Module 5: Machine Learning and scikit-learn! This repository provides resources to help you understand the theory and practice of machine learning, with a focus on scikit-learn and some applications to electrophysiology brain data.
 
 ## Table of Contents
+0. [Google interactive ML Course](https://developers.google.com/machine-learning/crash-course/prereqs-and-prework)
+   - ML models (Linear Regression, Logistic Regression, Classification)
+   - Data (Numerical and categorical), Generalization and Overfitting
+   - Advanced ML models (Neural Networks, Embeddings, LLMs) (Optional)
+   - Real-worl ML (Optional)
+
 1. [Introduction to Machine Learning (Tübingen)](https://www.youtube.com/playlist?list=PL05umP7R6ij35ShKLDqccJSDntugY4FQT)
    - Linear regression
    - Logistic regression
