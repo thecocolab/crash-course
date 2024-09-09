@@ -4,18 +4,18 @@ The Digital Research Alliance of Canada, previously known as ComputeCanada (CC),
 
 This guide will walk you through the steps to access these cluster machines and run your first script.
 
-### Acknowledging ComputeCanada
+## Acknowledging ComputeCanada
 
 If you use CalculQuebec / ComputeCanada resources in a paper or poster, please acknowledge them appropriately. For guidance on how to cite their contributions, refer to the [ComputeCanada Acknowledgment Guidelines](https://alliancecan.ca/en/services/advanced-research-computing/acknowledging-alliance).
 
-### Sponsorship
+## Sponsorship
 
 Access to the ComputeCanada clusters is granted through sponsorship by a Canadian academic. The only criterion is that the sponsoree must have some affiliation (e.g., Student or Collaborator). To obtain sponsorship:
 
 1. **Register for an Account**: Visit the [Compute Canada Database](https://ccdb.alliancecan.ca/security/login) and create an account. When prompted, request your sponsor's ID in the format `www-yyy-zz`.
 2. **Approval**: After submitting your request, your sponsor (e.g., Professor Karim) will need to approve and activate your account.
 
-### Access
+## Access
 
 Once your account is approved, you will have access to most clusters (e.g., Beluga, Cedar). Connect to a cluster via SSH using the command: `ssh USERNAME@CLUSTER_NAME.computecanada.ca`. To view the technical specifications of each cluster, visit [this link](https://alliancecan.ca/en/services/advanced-research-computing/national-services/clusters). You can also watch this [mini webinar](https://www.youtube.com/playlist?list=PLlIsA3IgWjnweFiHlOjBmsF2NTeJ6f5rT) to help you get started.
 
@@ -41,7 +41,7 @@ You can also use other programs like FileZilla or the command-line tool `rsync`.
 
 For automatic synchronization between your local system and the cluster, refer to the [Compute Canada Documentation](https://docs.alliancecan.ca/wiki/Transferring_data#Synchronizing_files).
 
-### Getting Started
+## Getting Started
 
 #### Resource Request
 
@@ -199,7 +199,7 @@ If you prefer using text editors like VSCode, you can run your interactive jobs 
    For detailed instructions on using VSCode with remote servers, refer to the [ComputeCanada documentation](https://docs.alliancecan.ca/wiki/Visual_Studio_Code).
 
 
-### General Advice and Pro Tips
+## General Advice and Pro Tips
 
 - **Understand the Job Scheduler:** Familiarity with job scheduling can be very beneficial. Shorter jobs (typically multiples of 3 hours) generally have more opportunities and can receive allocations more quickly. For more details, check the [Job Scheduling Policies](https://docs.alliancecan.ca/wiki/Job_scheduling_policies).
 
@@ -213,7 +213,7 @@ If you prefer using text editors like VSCode, you can run your interactive jobs 
 - **Essential Resource:** The [Technical Documentation](https://docs.alliancecan.ca/wiki/Technical_documentation) is a must-read for comprehensive information.
 
 
-### Advanced: Parallel Processing with Joblib
+## Advanced: Parallel Processing with Joblib
 
 For computational tasks that can benefit from parallel execution, you can use the `joblib` library. This section demonstrates how to use `joblib` for parallel processing along with `itertools.product` for handling combinations of parameters.
 
@@ -260,7 +260,7 @@ if __name__ == "__main__":
 - **Efficiency:** Parallel processing can significantly speed up computations by leveraging multiple CPU cores.
 - **Scalability:** Easily scale your processing by adjusting the number of jobs (`n_jobs`).
 
-### Advanced: Using Array Jobs
+## Advanced: Using Array Jobs
 
 Array jobs are a powerful feature available on many job scheduling systems, such as SLURM, that allow you to submit and manage multiple jobs simultaneously. This is particularly useful for tasks that are similar but need to be run with different parameters or datasets.
 
@@ -318,22 +318,22 @@ Here’s an example of how to set up an array job using SLURM:
 
 For more details on array jobs and how to configure them, refer to the [Compute Canada Array Job Documentation](https://docs.alliancecan.ca/wiki/Job_arrays).
 
-### Advanced: Running Multiple Array Jobs with SLURM and Python
+## Advanced: Running Multiple Array Jobs with SLURM and Python
 
 Here, you'll learn how to automate the submission of multiple SLURM array jobs using a Python script. 
 
-### Overview
+#### Overview
 
 1. **Python Script:** Generates and submits SLURM array job commands with different parameters.
 2. **SLURM Job Script:** Defines job details and executes a command for each array job.
 
-### Prerequisites
+#### Prerequisites
 
 - **SLURM Scheduler:** Ensure access to a SLURM-managed cluster.
 - **Python Environment:** Python must be installed along with necessary libraries.
 - **SLURM Account:** You need an account with permissions to submit jobs.
 
-### Step 1: Prepare the Python Script
+#### Step 1: Prepare the Python Script
 
 Create a Python script named `submit_array_jobs.py` to automate job submission. This script will generate SLURM job submissions with different parameters.
 
@@ -352,7 +352,7 @@ for data_set in data_sets:
             os.system(f'sbatch job_script.sh {data_set} {algorithm} {hyperparameter}')
 ```
 
-### Step 2: Create the SLURM Job Script
+#### Step 2: Create the SLURM Job Script
 
 Create a SLURM job script named `job_script.sh`. This script configures the job and runs a toy command for each array job.
 
@@ -376,7 +376,7 @@ module load python/3.8
 python /path/to/toy_script.py --data_set $1 --algorithm $2 --hyperparameter $3 --index $SLURM_ARRAY_TASK_ID
 ```
 
-### Step 3: Create the Python Execution Script
+#### Step 3: Create the Python Execution Script
 
 Create a Python script named `toy_script.py` that performs some toy computation based on the parameters provided.
 
@@ -398,7 +398,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Step 4: Run the Python Script to Submit Jobs
+#### Step 4: Run the Python Script to Submit Jobs
 
 Execute the Python script `submit_array_jobs.py` to submit all the array jobs to SLURM:
 
@@ -412,13 +412,13 @@ This command will generate and submit SLURM jobs for all combinations of paramet
 
 When running computations on a cluster, using the node’s temporary directory (`$SLURM_TMPDIR`) can significantly speed up your tasks. This directory is local to the node and provides faster read and write speeds compared to scratch/projects storage.
 
-### Why Use the Node's Temporary Directory?
+#### Why Use the Node's Temporary Directory?
 
 1. **Speed:** Accessing data from local storage is much faster than accessing data from network-mounted filesystems or shared storage.
 2. **Efficiency:** Temporary files created during computations can be stored and processed more efficiently on local disk.
 3. **Reduced I/O Bottlenecks:** By using local storage, you minimize the bottleneck associated with network I/O operations, which can be a limiting factor in multi-node computations.
 
-### How to Use the Node’s Temporary Directory
+#### How to Use the Node’s Temporary Directory
 
 1. **Modify Your SLURM Job Script**
 
