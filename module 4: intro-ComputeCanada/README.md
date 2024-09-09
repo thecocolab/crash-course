@@ -456,4 +456,4 @@ When running computations on a cluster, using the node’s temporary directory (
 
 
 ## Acknowledgment 
-This tutorial was based on previous materials created by Anirudh ([doc](https://docs.google.com/document/d/1w_qt5vfLQc116Ha8rJ5qDLqSrn5JyHQBeKEv3rby7DI/edit) and [git](https://github.com/anirudhk686/install-setup-instructions/blob/master/cluster%2Bjupyter%2Batom.txt)) and Arthur ([git](https://github.com/arthurdehgan/calQ_examples/tree/master)).g
+This tutorial was based on previous materials created by Anirudh ([doc](https://docs.google.com/document/d/1w_qt5vfLQc116Ha8rJ5qDLqSrn5JyHQBeKEv3rby7DI/edit) and [git](https://github.com/anirudhk686/install-setup-instructions/blob/master/cluster%2Bjupyter%2Batom.txt)) and Arthur ([git](https://github.com/arthurdehgan/calQ_examples/tree/master)).
