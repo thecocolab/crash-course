@@ -164,9 +164,6 @@ Before executing any code, request computing resources. This is like asking for 
 
    For more details, refer to the [ComputeCanada documentation](https://docs.alliancecan.ca/wiki/JupyterNotebook).
 
-Here’s a polished version of your instructions for using VSCode with an interactive job:
-
----
 
 #### Using VSCode for an Interactive Job
 
@@ -321,10 +318,6 @@ Here’s an example of how to set up an array job using SLURM:
 
 For more details on array jobs and how to configure them, refer to the [Compute Canada Array Job Documentation](https://docs.alliancecan.ca/wiki/Job_arrays).
 
-Certainly! Here’s a revised tutorial with toy examples to illustrate the concept of running multiple array jobs using SLURM and Python.
-
----
-
 ### Advanced: Running Multiple Array Jobs with SLURM and Python
 
 Here, you'll learn how to automate the submission of multiple SLURM array jobs using a Python script. 
@@ -415,10 +408,6 @@ python submit_array_jobs.py
 
 This command will generate and submit SLURM jobs for all combinations of parameters defined in the `submit_array_jobs.py` script.
 
-Certainly! Here’s an additional section on the importance of using the temporary directory (`/tmp`) of the node to speed up computations. This section will be added to the tutorial for a comprehensive understanding of how to optimize job performance.
-
----
-
 ## Advanced: Optimizing Computations by Using Node's Temporary Directory (node-local storage)
 
 When running computations on a cluster, using the node’s temporary directory (`$SLURM_TMPDIR`) can significantly speed up your tasks. This directory is local to the node and provides faster read and write speeds compared to scratch/projects storage.
@@ -465,4 +454,6 @@ When running computations on a cluster, using the node’s temporary directory (
 
 - **Use Appropriate Paths:** Ensure that paths to the temporary directory and files are correctly specified and handled in both SLURM and Python scripts.
 
-This tutorial was based on previous materials created by Anirudh ([doc](https://docs.google.com/document/d/1w_qt5vfLQc116Ha8rJ5qDLqSrn5JyHQBeKEv3rby7DI/edit) and [git](https://github.com/anirudhk686/install-setup-instructions/blob/master/cluster%2Bjupyter%2Batom.txt)) and Arthur ([git](https://github.com/arthurdehgan/calQ_examples/tree/master)).
+
+## Acknowledgment 
+This tutorial was based on previous materials created by Anirudh ([doc](https://docs.google.com/document/d/1w_qt5vfLQc116Ha8rJ5qDLqSrn5JyHQBeKEv3rby7DI/edit) and [git](https://github.com/anirudhk686/install-setup-instructions/blob/master/cluster%2Bjupyter%2Batom.txt)) and Arthur ([git](https://github.com/arthurdehgan/calQ_examples/tree/master)).g
