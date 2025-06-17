@@ -127,6 +127,88 @@ You can also use other programs like FileZilla or the command-line tool `rsync`.
 
 For automatic synchronization between your local system and the cluster, refer to the [Compute Canada Documentation](https://docs.alliancecan.ca/wiki/Transferring_data#Synchronizing_files).
 
+### Data Sharing and Access Control
+
+ComputeCanada provides fine-grained control over file and directory permissions using Access Control Lists (ACLs). This allows you to share data with specific users without making it accessible to everyone.
+
+#### Access Control Lists (ACLs)
+
+ACLs provide more granular control than traditional Unix permissions (owner, group, others). Two main commands are used to manage ACLs:
+
+- `getfacl`: View current ACL permissions
+- `setfacl`: Modify ACL permissions
+
+#### Sharing with Individual Users
+
+1. **Sharing a Single File**
+   ```bash
+   # Allow read and execute permission for a specific user
+   setfacl -m u:username:rx my_script.py
+   ```
+
+2. **Sharing a Directory**
+   ```bash
+   # Allow read and write access to a directory and its contents
+   # -d: Set default ACL for new files
+   # -R: Apply recursively to existing files
+   # -m: Modify ACL
+   setfacl -d -m u:username:rwX /home/<user>/projects/def-<PI>/shared_data
+   setfacl -R -m u:username:rwX /home/<user>/projects/def-<PI>/shared_data
+   ```
+
+3. **Viewing ACL Permissions**
+   ```bash
+   # Check current ACL settings
+   getfacl my_script.py
+   ```
+
+4. **Removing ACL Permissions**
+   ```bash
+   # Remove all extended ACL attributes recursively
+   setfacl -bR /home/<user>/projects/def-<PI>/shared_data
+   ```
+
+#### Data Sharing Groups
+
+For more complex sharing scenarios involving multiple users across different clusters, you can create a data sharing group:
+
+1. **Request Group Creation**
+   - Email technical support to request creation of a data sharing group
+   - Specify the desired group name and request ownership
+
+2. **Manage Group Members**
+   - Access the group through [CCDB Services](https://ccdb.computecanada.ca/services/)
+   - Add members to the group as needed
+
+3. **Set Group Permissions**
+   ```bash
+   # Set execute permission for the group on parent directory
+   chmod o+X /project/def-<PI>/
+   # OR
+   setfacl -m g:wg_datasharing:X /project/def-<PI>/
+
+   # Set read/write/execute permissions for the group
+   setfacl -d -m g:wg-datasharing:rwx /home/<user>/projects/def-<PI>/shared_data
+   setfacl -R -m g:wg-datasharing:rwx /home/<user>/projects/def-<PI>/shared_data
+   ```
+
+#### Troubleshooting
+
+1. **Check Read Access**
+   ```bash
+   # List all items not readable by you in a directory
+   find <directory_name> ! -readable -ls
+   ```
+
+2. **Verify Physical Paths**
+   ```bash
+   # Get the physical path of a symlink
+   realpath /home/username/projects/def-username/shared_data
+   ```
+   > **Note**: Physical paths may differ between clusters. Always verify paths when sharing across multiple clusters.
+
+For more detailed information about data sharing, visit the [Alliance Documentation](https://docs.alliancecan.ca/wiki/Sharing_data).
+
 ## Running Jobs on ComputeCanada
 
 ### Interactive Jobs (salloc)
@@ -231,15 +313,65 @@ VS Code provides a full-featured IDE experience with debugging capabilities.
    # Add similar configurations for other clusters
    ```
 
-3. **Connect to Compute Node**
-   Open the terminal and request an interactive allocation:
-   ```bash
-   # Start an interactive job
-   salloc --time=2:00:00 --mem=4G --cpus-per-task=4 --account=def-kjerbi
-   
-   # Save SLURM environment variables
-   env | grep SLURM_ | sed -e 's/^\(.*\)=\(.*\)$/export \1="\2"/g' > slurm_var.sh
-   ```
+3. **Connecting to ComputeCanada**
+
+   #### 3.1 Connect to Login Node
+   Follow these steps to connect to a login node:
+
+   1. **Open VS Code and Start Remote Connection**
+      - Press `F1` or `Ctrl+Shift+P` to open the Command Palette
+      ![Command Palette](img/1.png)
+      - Type "Remote-SSH: Connect to Host..." and select it
+      - You'll see a list of available clusters
+      ![Cluster List](img/2.png)
+
+   2. **Select and Connect to Cluster**
+      - Click on your desired cluster from the list
+      - Enter your password or passphrase when prompted
+      - Complete the multi-factor authentication if required
+
+   3. **Open Your Working Directory**
+      - Once connected, you'll see the VS Code interface
+      ![VS Code Interface](img/3.png)
+      - Click "Open Folder"
+      - Select your project folder
+      ![Folder Selection](img/4.png)
+      > **Note**: It's recommended to open only your project folder rather than your entire home directory to avoid connection bottlenecks.
+
+   4. **Configure Python Interpreter**
+      - Press `F1` or `Ctrl+Shift+P` again
+      ![Command Palette](img/5.png)
+      - Type "Python: Select Interpreter" and select it
+      - Choose your preferred Python environment
+
+   5. **Close Connection When Done**
+      - Press `F1` or `Ctrl+Shift+P`
+      - Type "Remote-SSH: Close Remote Connection"
+
+   #### 3.2 Connect to Compute Node
+   To work on a compute node, follow these steps:
+
+   1. **Start an Interactive Job**
+      ![Interactive Job](img/6.png)
+      ```bash
+      # Request an interactive job with sufficient memory
+      salloc --time=2:00:00 --mem=4G --cpus-per-task=4 --account=def-kjerbi
+      ```
+
+   2. **Save SLURM Environment Variables (Optional)**
+      ```bash
+      # Save all SLURM environment variables to a file
+      env | grep SLURM_ | sed -e 's/^\(.*\)=\(.*\)$/export \1="\2"/g' > slurm_var.sh
+      ```
+
+   3. **Connect to Compute Node in VS Code**
+      - Instead of connecting to a cluster, enter the compute node name directly
+      - Enter the compute node name (e.g., `cdr123`)
+      - Select "Linux" when prompted for the operating system
+      - If you saved SLURM variables, source them in the VS Code terminal:
+        ```bash
+        source slurm_var.sh
+        ```
 
 4. **Debugging Setup**
    ```bash
