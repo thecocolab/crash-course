@@ -89,4 +89,7 @@ Creation of a data preprocessing pipeline, including filtering, ICA, and automat
 ## PA3 - Analysis of Oscillations and Evoked Potentials
 Introduction to basic tools for data segmentation and calculation of evoked potentials and oscillations.
 
+## Further Reading & Practice
+For more advanced and detailed notebooks specifically focused on working with brain data (including more on MNE-Python), please see the **[PSY2007D-UdeM repository](https://github.com/thecocolab/PSY2007D-UdeM)**. Check out notebooks `0` through `8` in that repository.
+
 
