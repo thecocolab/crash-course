@@ -1,6 +1,6 @@
-# ComputeCanada from Scratch
+# Alliance Canada from Scratch
 
-The Digital Research Alliance of Canada, previously known as ComputeCanada (CC), provides high-performance computing (HPC) infrastructure to support academic research across Canada. The computing facilities, also known as clusters, are operated by the Digital Research Alliance of Canada through regional partners.
+The Digital Research Alliance of Canada (Alliance Canada), previously known as ComputeCanada (CC), provides high-performance computing (HPC) infrastructure to support academic research across Canada. The computing facilities, also known as clusters, are operated by the Digital Research Alliance of Canada through regional partners.
 
 This guide will walk you through the steps to access these cluster machines and run your first script.
 
@@ -9,7 +9,7 @@ This guide will walk you through the steps to access these cluster machines and 
    - [Account Setup](#account-setup)
    - [SSH Configuration](#ssh-configuration)
    - [Storage and Data Management](#storage-and-data-management)
-2. [Running Jobs on ComputeCanada](#running-jobs-on-computecanada)
+2. [Running Jobs on Alliance Canada](#running-jobs-on-alliance-canada)
    - [Interactive Jobs (salloc)](#interactive-jobs-salloc)
    - [Scheduled Jobs (sbatch)](#scheduled-jobs-sbatch)
    - [Array Jobs](#array-jobs)
@@ -29,13 +29,13 @@ This guide will walk you through the steps to access these cluster machines and 
 ### Account Setup
 
 #### Sponsorship
-Access to the ComputeCanada clusters is granted through sponsorship by a Canadian academic. The only criterion is that the sponsoree must have some affiliation (e.g., Student or Collaborator). To obtain sponsorship:
+Access to the Alliance Canada clusters is granted through sponsorship by a Canadian academic. The only criterion is that the sponsoree must have some affiliation (e.g., Student or Collaborator). To obtain sponsorship:
 
-1. **Register for an Account**: Visit the [Compute Canada Database](https://ccdb.alliancecan.ca/security/login) and create an account. When prompted, request your sponsor's ID in the format `www-yyy-zz`.
+1. **Register for an Account**: Visit the [CCDB (Alliance Canada Database)](https://ccdb.alliancecan.ca/security/login) and create an account. When prompted, request your sponsor's ID in the format `www-yyy-zz`.
 2. **Approval**: After submitting your request, your sponsor (e.g., Professor Karim) will need to approve and activate your account.
 
-#### Acknowledging ComputeCanada
-If you use CalculQuebec / ComputeCanada / Alliance Canada resources in a paper or poster, please acknowledge them appropriately. For guidance on how to cite their contributions, refer to the [ComputeCanada Acknowledgment Guidelines](https://alliancecan.ca/en/services/advanced-research-computing/acknowledging-alliance).
+#### Acknowledging Alliance Canada
+If you use CalculQuebec / Alliance Canada resources in a paper or poster, please acknowledge them appropriately. For guidance on how to cite their contributions, refer to the [Alliance Canada Acknowledgment Guidelines](https://alliancecan.ca/en/services/advanced-research-computing/acknowledging-alliance).
 
 ### SSH Configuration
 
@@ -49,63 +49,120 @@ To avoid entering your password each time you connect, set up [SSH keys](https:/
 For optimal VS Code integration, configure your SSH settings in `~/.ssh/config`:
 
 ```bash
-# Main cluster configurations
-Host beluga beluga.alliancecan.ca
-  User your_username
-  HostName beluga.alliancecan.ca
-  IdentityFile ~/.ssh/id_rsa_new
-  ControlPath ~/.ssh/cm-%r@%h:%p
-  ControlMaster auto
-  ControlPersist 10m
+# Default settings for all hosts
+Host *
+  ServerAliveInterval 300
+  ForwardAgent yes
 
+# Alliance / Compute Canada clusters (login nodes)
 Host narval narval.alliancecan.ca
-  User your_username
+  User USERNAME
   HostName narval.alliancecan.ca
-  IdentityFile ~/.ssh/id_rsa_new
+  IdentityFile ~/.ssh/RSA_KEY
   ControlPath ~/.ssh/cm-%r@%h:%p
   ControlMaster auto
   ControlPersist 10m
   ForwardAgent yes
 
-Host cedar cedar.alliancecan.ca
-  User your_username
-  HostName cedar.alliancecan.ca
-  IdentityFile ~/.ssh/id_rsa_new
+Host fir fir.alliancecan.ca
+  User USERNAME
+  HostName fir.alliancecan.ca
+  IdentityFile ~/.ssh/RSA_KEY
   ControlPath ~/.ssh/cm-%r@%h:%p
   ControlMaster auto
   ControlPersist 10m
 
-Host graham graham.alliancecan.ca
-  User your_username
-  HostName graham.alliancecan.ca
-  IdentityFile ~/.ssh/id_rsa_new
+Host nibi nibi.alliancecan.ca
+  User USERNAME
+  HostName nibi.alliancecan.ca
+  IdentityFile ~/.ssh/RSA_KEY
   ControlPath ~/.ssh/cm-%r@%h:%p
   ControlMaster auto
   ControlPersist 10m
+
+Host tamia tamia.alliancecan.ca
+  User USERNAME
+  HostName tamia.alliancecan.ca
+  IdentityFile ~/.ssh/RSA_KEY
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlMaster auto
+  ControlPersist 10m
+
+Host rorqual rorqual.alliancecan.ca
+  User USERNAME
+  HostName rorqual.alliancecan.ca
+  IdentityFile ~/.ssh/RSA_KEY
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlMaster auto
+  ControlPersist 10m
+  
+Host trillium trillium.alliancecan.ca
+  User USERNAME
+  HostName trillium.alliancecan.ca
+  IdentityFile ~/.ssh/RSA_KEY
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlMaster auto
+  ControlPersist 10m
+
+Host trillium-gpu trillium-gpu.alliancecan.ca
+  User USERNAME
+  HostName trillium-gpu.alliancecan.ca
+  IdentityFile ~/.ssh/RSA_KEY
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlMaster auto
+  ControlPersist 10m
+  
 
 # ProxyJump configurations for internal nodes
-Host bc????? bg????? bl?????
-  ProxyJump beluga
-  User your_username
-  IdentityFile ~/.ssh/id_rsa_new
-  ForwardAgent yes
 
-Host cdr*
-  ProxyJump cedar
-  User your_username
-  IdentityFile ~/.ssh/id_rsa_new
-  ForwardAgent yes
-
-Host gra1* gra2* gra3* gra4* gra5* gra6* gra7* gra8* gra9*
-  ProxyJump graham
-  User your_username
-  IdentityFile ~/.ssh/id_rsa_new
-  ForwardAgent yes
-
+# Narval internal node patterns (examples: nc12345, ng00001, nl00001)
 Host nc????? ng????? nl?????
   ProxyJump narval
-  User your_username
-  IdentityFile ~/.ssh/id_rsa_new
+  User USERNAME
+  IdentityFile ~/.ssh/RSA_KEY
+  ForwardAgent yes
+
+# FIR internal nodes like fir1, fir02, etc. (but not the login node "fir")
+Host fir[0-9]*
+  ProxyJump fir
+  User USERNAME
+  IdentityFile ~/.ssh/RSA_KEY
+  ForwardAgent yes
+
+# NIBI internal nodes like nibi1, nibi02, etc.
+Host nibi[0-9]*
+  ProxyJump nibi
+  User USERNAME
+  IdentityFile ~/.ssh/RSA_KEY
+  ForwardAgent yes
+
+# TAMIA internal nodes like tamia1, tamia02, etc.
+Host tc*
+  ProxyJump tamia
+  HostName %h.tamia.ecpia.ca
+  User USERNAME
+  IdentityFile ~/.ssh/RSA_KEY
+  ForwardAgent yes
+
+# RORQUAL internal nodes like rorqual1, rorqual02, etc.
+Host rorqual[0-9]*
+  ProxyJump rorqual
+  User USERNAME
+  IdentityFile ~/.ssh/RSA_KEY
+  ForwardAgent yes
+
+# TRILLIUM internal nodes like trillium1, trillium02, etc.
+Host trillium[0-9]*
+  ProxyJump trillium
+  User USERNAME
+  IdentityFile ~/.ssh/RSA_KEY
+  ForwardAgent yes
+
+# TRILLIUM-GPU internal nodes like trillium-gpu1, trillium-gpu02, etc.
+Host trillium-gpu[0-9]*
+  ProxyJump trillium-gpu
+  User USERNAME
+  IdentityFile ~/.ssh/RSA_KEY
   ForwardAgent yes
 ```
 
@@ -125,11 +182,11 @@ To transfer data from a local system to a cluster or between clusters, use Globu
 
 You can also use other programs like FileZilla or the command-line tool `rsync`.
 
-For automatic synchronization between your local system and the cluster, refer to the [Compute Canada Documentation](https://docs.alliancecan.ca/wiki/Transferring_data#Synchronizing_files).
+For automatic synchronization between your local system and the cluster, refer to the [Alliance Canada Documentation](https://docs.alliancecan.ca/wiki/Transferring_data#Synchronizing_files).
 
 ### Data Sharing and Access Control
 
-ComputeCanada provides fine-grained control over file and directory permissions using Access Control Lists (ACLs). This allows you to share data with specific users without making it accessible to everyone.
+Alliance Canada provides fine-grained control over file and directory permissions using Access Control Lists (ACLs). This allows you to share data with specific users without making it accessible to everyone.
 
 #### Access Control Lists (ACLs)
 
@@ -152,8 +209,8 @@ ACLs provide more granular control than traditional Unix permissions (owner, gro
    # -d: Set default ACL for new files
    # -R: Apply recursively to existing files
    # -m: Modify ACL
-   setfacl -d -m u:username:rwX /home/<user>/projects/def-<PI>/shared_data
-   setfacl -R -m u:username:rwX /home/<user>/projects/def-<PI>/shared_data
+   setfacl -d -m u:username:rwX /home/username/projects/def-<PI>/shared_data
+   setfacl -R -m u:username:rwX /home/username/projects/def-<PI>/shared_data
    ```
 
 3. **Viewing ACL Permissions**
@@ -165,7 +222,7 @@ ACLs provide more granular control than traditional Unix permissions (owner, gro
 4. **Removing ACL Permissions**
    ```bash
    # Remove all extended ACL attributes recursively
-   setfacl -bR /home/<user>/projects/def-<PI>/shared_data
+   setfacl -bR /home/username/projects/def-<PI>/shared_data
    ```
 
 #### Data Sharing Groups
@@ -177,7 +234,7 @@ For more complex sharing scenarios involving multiple users across different clu
    - Specify the desired group name and request ownership
 
 2. **Manage Group Members**
-   - Access the group through [CCDB Services](https://ccdb.computecanada.ca/services/)
+   - Access the group through [CCDB Services](https://ccdb.alliancecan.ca/services/)
    - Add members to the group as needed
 
 3. **Set Group Permissions**
@@ -188,8 +245,8 @@ For more complex sharing scenarios involving multiple users across different clu
    setfacl -m g:wg_datasharing:X /project/def-<PI>/
 
    # Set read/write/execute permissions for the group
-   setfacl -d -m g:wg-datasharing:rwx /home/<user>/projects/def-<PI>/shared_data
-   setfacl -R -m g:wg-datasharing:rwx /home/<user>/projects/def-<PI>/shared_data
+   setfacl -d -m g:wg-datasharing:rwx /home/username/projects/def-<PI>/shared_data
+   setfacl -R -m g:wg-datasharing:rwx /home/username/projects/def-<PI>/shared_data
    ```
 
 #### Troubleshooting
@@ -209,7 +266,7 @@ For more complex sharing scenarios involving multiple users across different clu
 
 For more detailed information about data sharing, visit the [Alliance Documentation](https://docs.alliancecan.ca/wiki/Sharing_data).
 
-## Running Jobs on ComputeCanada
+## Running Jobs on Alliance Canada
 
 ### Interactive Jobs (salloc)
 Interactive jobs allow you to run commands and scripts directly on the compute nodes. This is useful for:
@@ -302,10 +359,10 @@ VS Code provides a full-featured IDE experience with debugging capabilities.
 2. **Configure SSH (done in a previous step)**
    Add the following to your `~/.ssh/config`:
    ```bash
-   Host beluga beluga.alliancecan.ca
-     User your_username
-     HostName beluga.alliancecan.ca
-     IdentityFile ~/.ssh/id_rsa_new
+   Host narval narval.alliancecan.ca
+     User USERNAME
+     HostName narval.alliancecan.ca
+     IdentityFile ~/.ssh/RSA_KEY
      ControlPath ~/.ssh/cm-%r@%h:%p
      ControlMaster auto
      ControlPersist 10m
@@ -313,7 +370,7 @@ VS Code provides a full-featured IDE experience with debugging capabilities.
    # Add similar configurations for other clusters
    ```
 
-3. **Connecting to ComputeCanada**
+3. **Connecting to Alliance Canada**
 
    #### 3.1 Connect to Login Node
    Follow these steps to connect to a login node:
