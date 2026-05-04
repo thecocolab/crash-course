@@ -40,7 +40,7 @@ This course is written to help you understand the basics of CLIs irrespective of
    - Basic Scripting Elements
    - Writing and Executing a Script
    - Debugging and Best Practices
-#### 7. Remote Computing and Data Handling (like [ComputeCanada](https://github.com/thecocolab/crash-course/tree/main/module%204%3A%20intro-ComputeCanada) for example)
+#### 7. Remote Computing and Data Handling (like the [Alliance Canada onboarding module](../module_04_intro_alliance_canada/README.md))
    - Using SSH for Remote Access
    - Transferring Files with `scp` and `rsync`
    - Advanced SSH Usage
@@ -208,7 +208,7 @@ Shell scripting is a powerful tool for automating repetitive tasks and simplifyi
 
 Shell scripting is an essential skill for automating tasks and enhancing productivity in coding and data science workflows.
 
-## 7: Remote Computing and Data Handling (like [ComputeCanada](https://github.com/thecocolab/crash-course/tree/main/module%204%3A%20intro-ComputeCanada) for example)
+## 7: Remote Computing and Data Handling (like the [Alliance Canada onboarding module](../module_04_intro_alliance_canada/README.md))
 
 This module covers essential skills for remote computing and data handling, key components in modern data science and development workflows. You'll learn about securely accessing remote systems and efficiently transferring files.
 
@@ -235,4 +235,3 @@ Remote computing and data handling are crucial for dealing with large datasets, 
 ## 8: Linux commands
 
 This is a [CheatSheet](https://www.git-tower.com/blog/command-line-cheat-sheet/) with different commands that you might find useful.
-

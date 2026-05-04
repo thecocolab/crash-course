@@ -1,6 +1,6 @@
-# Machine Learning and scikit-learn Module
+# Module 06: Machine Learning and scikit-learn
 
-Welcome to the Module 5: Machine Learning and scikit-learn! This repository provides resources to help you understand the theory and practice of machine learning, with a focus on scikit-learn and some applications to electrophysiology brain data.
+Welcome to Module 06: Machine Learning and scikit-learn. This repository provides resources to help you understand the theory and practice of machine learning, with a focus on scikit-learn and some applications to electrophysiology brain data.
 
 ## Table of Contents
 0. [Google interactive ML Course](https://developers.google.com/machine-learning/crash-course/prereqs-and-prework)
